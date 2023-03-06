@@ -1,5 +1,4 @@
 require 'json'
-require 'pry'
 
 class HolidayApiService 
   def self.get_url(url) 
