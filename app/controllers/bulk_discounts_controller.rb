@@ -1,6 +1,7 @@
 class BulkDiscountsController < ApplicationController
 
   def index
+    @api = HolidayApi.new(HolidayApiService.holiday_page).holidays_and_dates
     @merchant = Merchant.find(params[:merchant_id])
     @bulk_discounts  = @merchant.bulk_discounts
   end

@@ -67,7 +67,7 @@ describe "merchant bulk discounts" do
 
   it "I see next to each bulk discount a link to delete it. When I click this link I am redirected back to the bulk discounts index page and I no longer see this discount listed" do
     visit merchant_bulk_discounts_path(@merchant1)
-    
+
     expect(page).to have_link("Delete: #{@discount1.id}")
     expect(page).to have_link("Delete: #{@discount2.id}")
 
@@ -78,10 +78,14 @@ describe "merchant bulk discounts" do
     expect(page).to_not have_content(@discount1.id)
   end
 
+  it "I see a section with a header of 'Upcoming Holidays.' In this section the name and date of the next 3 upcoming US holidays are listed." do
+    visit merchant_bulk_discounts_path(@merchant1)
 
+    expect(page).to have_content("Holiday: Good Friday, Date: 2023-04-07")
+    expect(page).to have_content("Holiday: Memorial Day, Date: 2023-05-29")
+    expect(page).to have_content("Holiday: Juneteenth, Date: 2023-06-19")
 
-
-
-
-
+    expect("Holiday: Good Friday, Date: 2023-04-07").to appear_before("Holiday: Memorial Day, Date: 2023-05-29")
+    expect("Holiday: Memorial Day, Date: 2023-05-29").to appear_before("Holiday: Juneteenth, Date: 2023-06-19")
   end
+end
