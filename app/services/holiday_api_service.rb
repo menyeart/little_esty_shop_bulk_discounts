@@ -1,5 +1,4 @@
 require 'json'
-require 'httparty'
 require 'pry'
 
 class HolidayApiService 
