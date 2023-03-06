@@ -11,5 +11,3 @@ class HolidayApi
     end
   end
 end
-
-
