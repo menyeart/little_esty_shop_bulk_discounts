@@ -67,15 +67,18 @@ describe "merchant bulk discounts" do
 
   it "I see next to each bulk discount a link to delete it. When I click this link I am redirected back to the bulk discounts index page and I no longer see this discount listed" do
     visit merchant_bulk_discounts_path(@merchant1)
-
+    save_and_open_page
     expect(page).to have_link("Delete: #{@discount1.id}")
     expect(page).to have_link("Delete: #{@discount2.id}")
 
     click_link("Delete: #{@discount1.id}")
 
     expect(current_path).to eq(merchant_bulk_discounts_path(@merchant1))
-    expect(page).to have_content(@discount2.id)
-    expect(page).to_not have_content(@discount1.id)
+
+    within("#discounts") do
+      expect(page).to have_content(@discount2.id)
+      expect(page).to_not have_content(@discount1.id)
+    end
   end
 
   it "I see a section with a header of 'Upcoming Holidays.' In this section the name and date of the next 3 upcoming US holidays are listed." do
