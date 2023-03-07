@@ -2,12 +2,17 @@ require './app/services/holiday_api_service.rb'
 
 
 class HolidayApi 
-  attr_reader :holidays, :holidays_and_dates
+  attr_reader 
          
   def initialize(holiday_page)
-    @holidays_and_dates = []
-    @holidays = holiday_page.each_with_index do |holiday, index| 
-      @holidays_and_dates << "Holiday: #{holiday[:name]}, Date: #{holiday[:date]}" unless index > 2
+    @page =  holiday_page
+  end
+
+  def holidays_and_dates
+    holidays_and_dates = []
+    @page.each_with_index do |holiday, index| 
+      holidays_and_dates << "Holiday: #{holiday[:name]}, Date: #{holiday[:date]}" unless index > 2
     end
+    holidays_and_dates
   end
 end
