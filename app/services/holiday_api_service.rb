@@ -1,4 +1,5 @@
 require 'json'
+require 'httparty'
 
 class HolidayApiService 
   def self.get_url(url) 
