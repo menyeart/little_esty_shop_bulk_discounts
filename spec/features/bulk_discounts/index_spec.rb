@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe "merchant bulk discounts" do
   include ApplicationHelper
+
   before :each do
+    Timecop.freeze(Time.local(2023, 3, 6))
     @merchant1 = Merchant.create!(name: 'Hair Care')
     @merchant2 = Merchant.create!(name: 'Pets R Us')
 

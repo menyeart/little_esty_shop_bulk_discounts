@@ -45,6 +45,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'httparty'
+  gem 'timecop'
 end
 
 group :development do
